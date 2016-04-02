@@ -1,13 +1,20 @@
 # c9ssh
 ## preview
+
 ###### I come across a idea that if I can remote control the c9 workspace on my laptop. Through several trials, I find a solution to it by using a Dynamic Domain Name Resolving and Port Mapping software called Nat123 to jump over the Google Firewall. The main idea is show as follow:
 
 ### step1: 
-create another user account $(USERNAME) in the docker, whatever the name, but remember to add it to sudo and root group.
+
+    create another user account $(USERNAME) in the docker, whatever the name, but remember to add it to sudo and root group.
+    
 ### step2: 
-switch to that account, then create a .ssh folder and create private and public RSA key for local test.
+
+    switch to that account, then create a .ssh folder and create private and public RSA key for local test.
+    
 ### step3: 
-add RSA public key to ~/.ssh/authorized_keys. At present, you can ssh locally if you didn't mess up in previous steps.
+
+    add RSA public key to ~/.ssh/authorized_keys. At present, you can ssh locally if you didn't mess up in previous steps.
+    
 ### step4: 
 ###### the hard thing is :
 
@@ -15,14 +22,19 @@ add RSA public key to ~/.ssh/authorized_keys. At present, you can ssh locally if
 ###### 2. Docker is in a subnetwork
 ###### 3. Google only open limited port for users
 
-so we can install a software which can update the domain name's A record dynamically(binding docker's IP to a specific domain name automatically and constantly ). There is a proper software, which can do this work. However, this software's webpage only in Chinese. But it is sure that you can find an alternate one, or you can follow the detailed instructions in below.
+    so we can install a software which can update the domain name's A record dynamically(binding docker's IP to a specific domain name automatically and constantly ). There is a proper software, which can do this work. However, this software's webpage only in Chinese. But it is sure that you can find an alternate one, or you can follow the detailed instructions in below.
 
 ### step5:
-port mapping: localhost:22->$(DOMAIN):$(PORT) 
+
+    port mapping: localhost:22->$(DOMAIN):$(PORT) 
+
 ### step6:
-add SSH public key of your laptop to authorized_keys
+
+    add SSH public key of your laptop to authorized_keys
+
 ### step7: 
-ssh $(USERNAME)@$(DOMAIN) -p $(PORT)
+
+    ssh $(USERNAME)@$(DOMAIN) -p $(PORT)
 
 so,this is only a brief instruction to solve the problem.
 
@@ -99,7 +111,8 @@ you can aslo add a script into /etc/init.d, so that nat123 service can run as st
 ### step5:
 sign in nat123 website <a href="http://www.nat123.com">nat123</a>
 add a Port Mapping
-localhost:22->$(DOMAIN):$(PORT)
+
+    localhost:22->$(DOMAIN):$(PORT)
 
 ### step6:
 add SSH public key of your laptop to authorized_keys
