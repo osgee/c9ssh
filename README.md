@@ -9,11 +9,11 @@ switch to that account, then create a .ssh folder and create private and public 
 ### step3: 
 add RSA public key to ~/.ssh/authorized_keys. At present, you can ssh locally if you didn't mess up in previous steps.
 ### step4: 
-#### the hard thing is :
+###### the hard thing is :
 
-#### 1.Ip of the docker changes constantly
-#### 2.docker is in a subnetwork
-#### 3.Google only open limited port for users
+###### 1.Ip of the docker changes constantly
+###### 2.docker is in a subnetwork
+###### 3.Google only open limited port for users
 
 so we can install a software which can update the domain name's A record dynamically(binding docker's IP to a specific domain name automatically and constantly ). There is a proper software, which can do this work. However, this software's webpage only in Chinese. But it is sure that you can find an alternate one, or you can follow the detailed instructions in below.
 
@@ -38,12 +38,12 @@ create another user account ('account' for example)
 switch to new account with password('password' for example)
 
     $ su account
-    $ mkdir .ssh
+    $ mkdir ~/.ssh
     $ ssh-keygen -t rsa -b 2048 -P '' -f ~/.ssh/id_rsa
     
 ### step3
 
-    $ cat ~/.ssh/id_rsa.pub >> authorized_keys
+    $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
     
 try to ssh into account
 
@@ -90,6 +90,11 @@ run nat service
 
 sign in with your nat account
 push CTRL + a d to set the service run in the background
+if you have sign in succeed, mono will remeber the account, use command in below instead
+
+    $ mono nat123linux.sh service
+    
+you can aslo add a script into /etc/init.d, so that nat123 service can run as startup 
 
 ### step5:
 sign in nat123 website <a href="www.nat123.net">nat123</a>
@@ -105,12 +110,12 @@ in your laptop
 copy the public key text
 then in c9 IDE
 
-    $ echo '$(paste_public_key_here)' >> ~/.ssh/authorized_keys
+    $ echo '$LAPTOP_PUBLIC_KEY' >> ~/.ssh/authorized_keys
 
 ### step7:
 in your laptop, ssh into c9 workspace
 
-    ssh $USERNAME@$DOMAIN -p $PORT
+    $ ssh $USERNAME@$DOMAIN -p $PORT
 
 #### wish you can login successfully
 
