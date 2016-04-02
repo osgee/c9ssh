@@ -11,9 +11,9 @@ add RSA public key to ~/.ssh/authorized_keys. At present, you can ssh locally if
 ### step4: 
 ###### the hard thing is :
 
-###### 1.Ip of the docker changes constantly
-###### 2.docker is in a subnetwork
-###### 3.Google only open limited port for users
+###### 1. Ip of the docker changes constantly
+###### 2. Docker is in a subnetwork
+###### 3. Google only open limited port for users
 
 so we can install a software which can update the domain name's A record dynamically(binding docker's IP to a specific domain name automatically and constantly ). There is a proper software, which can do this work. However, this software's webpage only in Chinese. But it is sure that you can find an alternate one, or you can follow the detailed instructions in below.
 
@@ -27,21 +27,21 @@ ssh $(USERNAME)@$(DOMAIN) -p $(PORT)
 so,this is only a brief instruction to solve the problem.
 
 ## Detailed Instructions
-### step 1
+### step1:
 create another user account ('account' for example)
 
     $ sudo adduser account
     $ sudo adduser account root
     $ sudo adduser account sudo
 
-### step2
+### step2:
 switch to new account with password('password' for example)
 
     $ su account
     $ mkdir ~/.ssh
     $ ssh-keygen -t rsa -b 2048 -P '' -f ~/.ssh/id_rsa
     
-### step3
+### step3:
 
     $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
     
@@ -51,7 +51,7 @@ try to ssh into account
 
 if succeed, match forward
 
-### step4
+### step4:
 install nat123
 fist update apt-get repository
 
@@ -97,7 +97,7 @@ if you have sign in succeed, mono will remeber the account, use command in below
 you can aslo add a script into /etc/init.d, so that nat123 service can run as startup 
 
 ### step5:
-sign in nat123 website <a href="www.nat123.net">nat123</a>
+sign in nat123 website <a href="www.nat123.com">nat123</a>
 add a Port Mapping
 localhost:22->$(DOMAIN):$(PORT)
 
@@ -117,7 +117,7 @@ in your laptop, ssh into c9 workspace
 
     $ ssh $USERNAME@$DOMAIN -p $PORT
 
-#### wish you can login successfully
+#### wish you can login successfully!
 
 
 
