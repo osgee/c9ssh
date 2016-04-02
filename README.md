@@ -5,15 +5,20 @@
 
 ### step1: 
 
-    create another user account $(USERNAME) in the docker, whatever the name, but remember to add it to sudo and root group.
+    create another user account $(USERNAME) in the docker
+    
+whatever the name, but remember to add it to sudo and root group.
     
 ### step2: 
 
-    switch to that account, then create a .ssh folder and create private and public RSA key for local test.
+    switch to that account, then create a .ssh folder 
+    create private and public RSA key for local test.
     
 ### step3: 
 
-    add RSA public key to ~/.ssh/authorized_keys. At present, you can ssh locally if you didn't mess up in previous steps.
+    add RSA public key to ~/.ssh/authorized_keys. 
+    
+At present, you can ssh locally if you didn't mess up in previous steps.
     
 ### step4: 
 ###### the hard thing is :
@@ -22,7 +27,7 @@
 ###### 2. Docker is in a subnetwork
 ###### 3. Google only open limited port for users
 
-    so we can install a software which can update the domain name's A record dynamically(binding docker's IP to a specific domain name automatically and constantly ). There is a proper software, which can do this work. However, this software's webpage only in Chinese. But it is sure that you can find an alternate one, or you can follow the detailed instructions in below.
+so we can install a software which can update the domain name's A record dynamically(binding docker's IP to a specific domain name automatically and constantly ). There is a proper software, which can do this work. However, this software's webpage only in Chinese. But it is sure that you can find an alternate one, or you can follow the detailed instructions in below.
 
 ### step5:
 
