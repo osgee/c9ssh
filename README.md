@@ -97,7 +97,7 @@ if you have sign in succeed, mono will remeber the account, use command in below
 you can aslo add a script into /etc/init.d, so that nat123 service can run as startup 
 
 ### step5:
-sign in nat123 website <a href="www.nat123.com">nat123</a>
+sign in nat123 website <a href="http://www.nat123.com">nat123</a>
 add a Port Mapping
 localhost:22->$(DOMAIN):$(PORT)
 
