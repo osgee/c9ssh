@@ -1,4 +1,12 @@
 # c9ssh
+
+## quick deploy
+
+    $ cd ~
+    $ git clone https://github.com/osgee/c9ssh.git
+    $ cd c9ssh
+    $ sudo sh deploy.sh
+
 ## preview
 
 ###### I come across a idea that if I can remote control the c9 workspace on my laptop. Through several trials, I find a solution to it by using a Dynamic Domain Name Resolving and Port Mapping software called Nat123 to jump over the Google Firewall. The main idea is show as follow:
@@ -76,7 +84,7 @@ fist update apt-get repository
     
 then install mono
 
-    $ sudo apt-get install mono
+    $ sudo apt-get install mono-complete
     
 check the version of mono
 
