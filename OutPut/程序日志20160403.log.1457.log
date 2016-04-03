@@ -1,0 +1,10 @@
+
+***队列日志1***
+04/03/2016 14:51:31：error-处理版本信息出错错误消息Object reference not set to an instance of an object堆椎信息  at nat123client.LoginActivity.aNlJDUSuA (NetComm.EtyMessage ) <0x4010e000 + 0x00104> in <filename unknown>:0 
+
+***队列日志1***
+04/03/2016 14:54:45：error-接收数据出错,连接断开错误消息Read failure堆椎信息  at System.Net.Sockets.NetworkStream.Read (System.Byte[] buffer, Int32 offset, Int32 size) <0x40104b40 + 0x000ff> in <filename unknown>:0 
+  at NetComm.ClientUser.RevieveThead () <0x401047a0 + 0x00080> in <filename unknown>:0 
+
+***队列日志1***
+04/03/2016 14:55:00：error-处理版本信息出错错误消息Object reference not set to an instance of an object堆椎信息  at nat123client.LoginActivity.aNlJDUSuA (NetComm.EtyMessage ) <0x4010e000 + 0x00104> in <filename unknown>:0 

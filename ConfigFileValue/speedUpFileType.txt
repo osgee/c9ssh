@@ -1,0 +1,1 @@
+.jpg,.gif,.png,.js,.css,.css?q50,.js?q50,.ico,.flv,.mp3,.bmp,.js?C4j,.css?C4j,.exe
