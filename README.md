@@ -91,6 +91,8 @@ then, download nat123 from http server
     $ cd ~
     $ wget http://www.nat123.com/down/nat123linux.tar.gz
 
+if the file nat123linux.tar.gz can not work, you can get the package from c9ssh github
+
 untar the compiled tar file
 
     $ mkdir ~/nat123
