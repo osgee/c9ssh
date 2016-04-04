@@ -140,6 +140,17 @@ then in c9 IDE
 
     $ echo '$LAPTOP_PUBLIC_KEY' >> ~/.ssh/authorized_keys
 
+make sure the file mode as follow
+
+    drwx------ .ssh/
+    -rw-r--r-- authorized\_keys
+
+or use chomod
+
+    $ sudo chmod 700 ~/.ssh
+    $ cd ~/.ssh
+    $ sudo chmod 644 authorized\_keys
+    
 ### step7:
 in your laptop, ssh into c9 workspace
 
