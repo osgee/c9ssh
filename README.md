@@ -143,7 +143,7 @@ then in c9 IDE
 make sure the file mode as follow
 
     drwx------ .ssh/
-    -rw-r--r-- authorized\_keys
+    -rw-r--r-- authorized_keys
 
 or use chomod
 
