@@ -12,7 +12,7 @@ on ubuntu
 
 on centos
 
-    $ sudo sh deploy_ubuntu.sh
+    $ sudo sh deploy_centos.sh
 
 ## preview
 
@@ -31,12 +31,12 @@ whatever the name, but remember to add it to sudo and root group.
     
 ### step3: 
 
-    add RSA public key to ~/.ssh/authorized_keys. 
+    add RSA public key to ~/.ssh/authorized_keys
     
 At present, you can ssh locally if you didn't mess up in previous steps.
     
 ### step4: 
-###### the hard thing is :
+###### the hard things are:
 
 ###### 1. Ip of the docker changes constantly
 ###### 2. Docker is in a subnetwork
@@ -56,7 +56,7 @@ so we can install a software which can update the domain name's A record dynamic
 
     ssh $(USERNAME)@$(DOMAIN) -p $(PORT)
 
-so,this is only a brief instruction to solve the problem.
+so, this is only a brief concept to solve the problem. The detailed instructions are as follow:
 
 ## Detailed Instructions
 ### step1:
@@ -64,10 +64,10 @@ create another user account ('account' for example)
 
     $ sudo adduser account
     $ sudo usermod account -G root
-    $ sudo usermon account -G sudo
+    $ sudo usermod account -G sudo
 
 ### step2:
-switch to new account with password('password' for example)
+switch to new account with password('password' for example) and generate ssh rsa key pair
 
     $ su account
     $ mkdir ~/.ssh
@@ -111,7 +111,7 @@ untar the compiled tar file
     $ mkdir ~/nat123
     $ tar -zxvf nat123linux.tar.gz -C ~/nat123
 
-if the file nat123linux.tar.gz can not work, you can directly get the project from <a href="https://github.com/osgee/c9ssh/">c9ssh</a>
+if the file nat123linux.tar.gz can not access, you can directly get the project from <a href="https://github.com/osgee/c9ssh/">c9ssh</a>
 	
 	$ git clone https://github.com/osgee/c9ssh.git
 
@@ -169,6 +169,7 @@ in your laptop, ssh into c9 workspace
 
 ## what you can do with this
 1. you can use deploy squid3 on cloud9 server, which listen to port 3128 by default, and port mapping to a accessible port. Then use it as a proxy server.
+2. this method can aslo applied to other sub-network computers that support mono.
 
 
 
