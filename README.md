@@ -5,11 +5,18 @@
     $ cd ~
     $ git clone https://github.com/osgee/c9ssh.git
     $ cd c9ssh
-    $ sudo sh deploy.sh
+
+on ubuntu
+
+    $ sudo sh deploy_ubuntu.sh
+
+on centos
+
+    $ sudo sh deploy_ubuntu.sh
 
 ## preview
 
-###### I come across a idea that if I can remote control the c9 workspace on my laptop. Through several trials, I find a solution to it by using a Dynamic Domain Name Resolving and Port Mapping software called Nat123 to jump over the Google Firewall. The main idea is show as follow:
+###### I come across a idea that if I can remote control the c9 workspace on my laptop. Through several trials, I find a solution to it by using a Dynamic Domain Name Resolving and Port Mapping software called Nat123 to jump over the Google Cloud. The main idea is show as follow:
 
 ### step1: 
 
@@ -56,8 +63,8 @@ so,this is only a brief instruction to solve the problem.
 create another user account ('account' for example)
 
     $ sudo adduser account
-    $ sudo adduser account root
-    $ sudo adduser account sudo
+    $ sudo usermod account -G root
+    $ sudo usermon account -G sudo
 
 ### step2:
 switch to new account with password('password' for example)
@@ -80,11 +87,11 @@ if succeed, match forward
 install nat123
 fist update apt-get repository
 
-    $ sudo apt-get update
+    $ sudo apt-get -y update
     
 then install mono
 
-    $ sudo apt-get install mono-complete
+    $ sudo apt-get -y install mono-complete
     
 check the version of mono
 
@@ -92,20 +99,22 @@ check the version of mono
     
 next install screen
 
-    $ sudo apt-get install screen
+    $ sudo apt-get -y install screen
     
 then, download nat123 from http server
 
     $ cd ~
     $ wget http://www.nat123.com/down/nat123linux.tar.gz
 
-if the file nat123linux.tar.gz can not work, you can get the package from c9ssh github
-
 untar the compiled tar file
 
     $ mkdir ~/nat123
     $ tar -zxvf nat123linux.tar.gz -C ~/nat123
-    
+
+if the file nat123linux.tar.gz can not work, you can directly get the project from <a href="https://github.com/osgee/c9ssh/">c9ssh</a>
+	
+	$ git clone https://github.com/osgee/c9ssh.git
+
 sign up <a href="http://www.nat123.com/UsersReg.jsp">nat123 sign up</a>
 account: $(nat_account)
 password: $(nat_password)
@@ -117,11 +126,11 @@ run nat service
 
 sign in with your nat account
 push CTRL + a d to set the service run in the background
-if you have sign in succeed, mono will remeber the account, use command in below instead
+if you have ever signed in succeed, mono will remeber the account, use command in below instead
 
     $ mono nat123linux.sh service
     
-you can aslo add a script into /etc/init.d, so that nat123 service can run as startup 
+you can aslo add a script into /etc/init.d, so that nat123 service can run as startup process
 
 ### step5:
 sign in nat123 website <a href="http://www.nat123.com">nat123</a>
@@ -133,7 +142,7 @@ add a Port Mapping
 add SSH public key of your laptop to authorized_keys
 in your laptop
 
-    $ cat .ssh/id_rsa.puby
+    $ cat .ssh/id_rsa.pub
 
 copy the public key text
 then in c9 IDE
@@ -149,7 +158,7 @@ or use chomod
 
     $ sudo chmod 700 ~/.ssh
     $ cd ~/.ssh
-    $ sudo chmod 644 authorized\_keys
+    $ sudo chmod 644 authorized_keys
     
 ### step7:
 in your laptop, ssh into c9 workspace
