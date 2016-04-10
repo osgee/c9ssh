@@ -168,7 +168,7 @@ in your laptop, ssh into c9 workspace
 #### wish you can login successfully!
 
 ## what you can do with this
-1. you can use deploy squid3 on cloud9 server, which listen to port 3128 by default, and port mapping to a accessible port. Then use it as a proxy server.
+1. you can deploy squid3 on cloud9 server, which listen to port 3128 by default, and port mapping to a accessible port. Then use it as a proxy server.
 2. this method can aslo applied to other sub-network computers that support mono.
 
 
