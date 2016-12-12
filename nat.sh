@@ -4,7 +4,8 @@ export path=$path:/usr/local/bin/:/usr/bin/
 c9ssh_root=/Applications/c9ssh/
 
 
-sleep_interval=300
+sleep_interval=60
+daemon=nat123
 daemon1=nat123a
 daemon2=nat123b
 
@@ -26,6 +27,12 @@ function remote_daemon2 {
 	echo 'start remote_daemon2'
 	screen -dmS $daemon2 /usr/local/bin/mono $c9ssh_root'nat123linux.sh' service
 }
+
+function kill_daemon {
+	screen -X -S $daemon quit
+	echo 'kill_daemon'
+}
+
 
 function kill_daemon1 {
 	screen -X -S $daemon1 quit
@@ -80,5 +87,6 @@ function nat_daemon {
 	done
 }
 
-screen -dmS nat123 nat_daemon
+kill_daemon
+screen -dmS $daemon nat_daemon
 # nat_daemon
