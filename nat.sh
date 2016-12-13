@@ -41,7 +41,6 @@ function online {
 
 function kill_daemon1 {
 	echo "kill_daemon1" 
-	killall -u taofeng -m mono
 	screen -X -S $daemon1 quit 2>&1 1>/dev/null
 }
 
@@ -72,7 +71,7 @@ function nat_daemon {
 		if [ "$status" == "true" ]; then
 			echo "start remote_daemon"
 			remote_daemon1
-			sleep 5
+			sleep 15
 			remote_daemon2
 			sync="true"
 			status=$newstatus
