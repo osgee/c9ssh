@@ -1,6 +1,21 @@
 #!/bin/bash
 
 export path=$path:/usr/local/bin/:/usr/bin/
+
+daemon1=nat123a
+daemon2=nat123b
+daemon=nat123
+
+function kill_daemon {
+	screen -X -S $daemon1 quit 2>&1 1>/dev/null
+	screen -X -S $daemon2 quit 2>&1 1>/dev/null
+	screen -X -S $daemon quit  2>&1 1>/dev/null
+}
+
+
+echo '#!/bin/bash
+
+export path=$path:/usr/local/bin/:/usr/bin/
 c9ssh_root=/Applications/c9ssh/
 
 
@@ -18,42 +33,26 @@ function online {
 	fi
 }
 
-function remote_daemon1 {
-	echo 'start remote_daemon1'
-	screen -dmS $daemon1 /usr/local/bin/mono $c9ssh_root'nat123linux.sh' autologin  stone55 ft123456!
-}
-
-function remote_daemon2 {
-	echo 'start remote_daemon2'
-	screen -dmS $daemon2 /usr/local/bin/mono $c9ssh_root'nat123linux.sh' service
-}
-
-function kill_daemon {
-	screen -X -S $daemon quit
-	echo 'kill_daemon'
-}
-
-
 function kill_daemon1 {
-	screen -X -S $daemon1 quit
-	echo 'kill_daemon1'
+	echo "kill_daemon1" 
+	screen -X -S $daemon1 quit 2>&1 1>/dev/null
 }
 
 function kill_daemon2 {
-	screen -X -S $daemon2 quit
-	echo 'kill_daemon2'
+	echo "kill_daemon2"
+	screen -X -S $daemon2 quit 2>&1 1>/dev/null
 }
 
 function remote_daemon1 {
 	kill_daemon1
-	echo 'start remote_daemon1'
-	screen -dmS $daemon1 /usr/local/bin/mono $c9ssh_root'nat123linux.sh' autologin  stone55 ft123456!
+	echo "start remote_daemon1"
+	screen -dmS $daemon1 /usr/local/bin/mono $c9ssh_root"nat123linux.sh" autologin  stone55 ft123456!
 }
 
 function remote_daemon2 {
 	kill_daemon2
-	echo 'start remote_daemon2'
-	screen -dmS $daemon2 /usr/local/bin/mono $c9ssh_root'nat123linux.sh' service
+	echo "start remote_daemon2"
+	screen -dmS $daemon2 /usr/local/bin/mono $c9ssh_root"nat123linux.sh" service
 }
 
 function nat_daemon {
@@ -63,10 +62,10 @@ function nat_daemon {
 	while true; do
 	if [ "$sync" == "false" ]; then
 		if [ "$status" == "true" ]; then
-			echo 'start remote_daemon'
+			echo "start remote_daemon"
 			remote_daemon1
-			sleep 5
-			remote_daemon2
+			# sleep 5
+			# remote_daemon2
 			sync="true"
 			status=$newstatus
 		else
@@ -76,8 +75,8 @@ function nat_daemon {
 			status=$newstatus
 		fi
 	else
+		echo "sleep "$sleep_interval
 		sleep $sleep_interval
-		echo 'sleep '$sleep_interval
 		newstatus=$(online)
 		if [ ! "$newstatus" == "$status" ]; then
 			sync="false"
@@ -87,6 +86,11 @@ function nat_daemon {
 	done
 }
 
+nat_daemon
+
+' > /var/tmp/remote.sh
+
+remote_sh="/var/tmp/remote.sh"
+
 kill_daemon
-screen -dmS $daemon nat_daemon
-# nat_daemon
+if [ -z "$STY" ]; then exec screen -dm -S $daemon /bin/bash $remote_sh; fi
