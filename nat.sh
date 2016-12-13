@@ -8,8 +8,12 @@ daemon=nat123
 
 function kill_daemon {
 	screen -X -S $daemon1 quit 2>&1 1>/dev/null
+	sleep 0.5
 	screen -X -S $daemon2 quit 2>&1 1>/dev/null
+	sleep 0.5
 	screen -X -S $daemon quit  2>&1 1>/dev/null
+	sleep 0.5
+	screen -wipe 2>&1 1>/dev/null
 }
 
 
@@ -64,8 +68,8 @@ function nat_daemon {
 		if [ "$status" == "true" ]; then
 			echo "start remote_daemon"
 			remote_daemon1
-			# sleep 5
-			# remote_daemon2
+			sleep 5
+			remote_daemon2
 			sync="true"
 			status=$newstatus
 		else
