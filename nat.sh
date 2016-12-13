@@ -7,12 +7,14 @@ daemon2=nat123b
 daemon=nat123
 
 function kill_daemon {
+	killall -u taofeng -m mono
+	sleep 0.3
 	screen -X -S $daemon1 quit 2>&1 1>/dev/null
-	sleep 0.5
+	sleep 0.3
 	screen -X -S $daemon2 quit 2>&1 1>/dev/null
 	sleep 0.5
 	screen -X -S $daemon quit  2>&1 1>/dev/null
-	sleep 0.5
+	sleep 0.3
 	screen -wipe 2>&1 1>/dev/null
 }
 
@@ -39,11 +41,13 @@ function online {
 
 function kill_daemon1 {
 	echo "kill_daemon1" 
+	killall -u taofeng -m mono
 	screen -X -S $daemon1 quit 2>&1 1>/dev/null
 }
 
 function kill_daemon2 {
 	echo "kill_daemon2"
+	killall -u taofeng -m mono
 	screen -X -S $daemon2 quit 2>&1 1>/dev/null
 }
 
