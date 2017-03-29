@@ -7,7 +7,7 @@ daemon2=nat123b
 daemon=nat123
 
 function kill_daemon {
-	killall -u taofeng -m mono
+	killall -u $(whoami) -m mono
 	sleep 0.3
 	screen -X -S $daemon1 quit 2>&1 1>/dev/null
 	sleep 0.3
@@ -22,7 +22,7 @@ function kill_daemon {
 echo '#!/bin/bash
 
 export path=$path:/usr/local/bin/:/usr/bin/
-c9ssh_root=/Applications/c9ssh/
+c9ssh_root=/usr/local/c9ssh/
 
 
 sleep_interval=60
@@ -46,7 +46,7 @@ function kill_daemon1 {
 
 function kill_daemon2 {
 	echo "kill_daemon2"
-	killall -u taofeng -m mono
+	killall -u $(whoami) -m mono
 	screen -X -S $daemon2 quit 2>&1 1>/dev/null
 }
 
